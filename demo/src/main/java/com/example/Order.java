@@ -1,7 +1,9 @@
 package com.example;
 
 public class Order {
-    Item[] items = new Item[100];
+    private Item[] items = new Item[100];
+
+    
 
     public void addItem(Item item){
         int i = 0;
@@ -12,6 +14,14 @@ public class Order {
                 break;                
             }
         }
+    }
+
+    public Item[] getItems() {
+        return items;
+    }
+
+    public void setItems(Item[] items) {
+        this.items = items;
     }
 
     public double calculatePrice(){
