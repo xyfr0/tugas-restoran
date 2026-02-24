@@ -2,12 +2,10 @@ package com.example;
 
 public class Item {
     private String menu;
-    private int quantity;
     private double price;
 
-    public Item(String menu, int quantity, double price) {
+    public Item(String menu, double price) {
         this.menu = menu;
-        this.quantity = quantity;
         this.price = price;
     }
 
@@ -17,14 +15,6 @@ public class Item {
 
     public void setMenu(String menu) {
         this.menu = menu;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public double getPrice() {

@@ -1,6 +1,6 @@
 package com.example;
 
-public class Menu {
+public class Order {
     Item[] items = new Item[100];
 
     public void addItem(Item item){
@@ -10,11 +10,6 @@ public class Menu {
                 items[i] = item;
                 i++;
                 break;                
-            } else{
-                if (items[i].getMenu() == item.getMenu()) {
-                    items[i].setQuantity(items[i].getQuantity() + item.getQuantity());
-                }
-                i++;
             }
         }
     }
@@ -23,8 +18,7 @@ public class Menu {
         int i = 0;
         double price = 0;
         while(items[i] != null){
-            price += items[i].getPrice() * items[i].getQuantity();
-            i++;
+            price += items[i].getPrice();
         }
         return price;
     }
@@ -35,7 +29,7 @@ public class Menu {
         System.out.println();
         for(int i = 0; i < items.length; i++){
             if (items[i] != null) {
-                System.out.printf("%s %32.2f\n%sx%s\n", items[i].getMenu(), items[i].getQuantity() * items[i].getPrice(), items[i].getQuantity(), items[i].getPrice());                    
+                System.out.printf("%s\n%.2f\n", items[i].getMenu(), items[i].getPrice());                    
             }
         }
         System.out.println("==================================================");
