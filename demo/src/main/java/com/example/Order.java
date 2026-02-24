@@ -2,18 +2,16 @@ package com.example;
 
 public class Order {
     private Item[] items = new Item[100];
-
-    
+    private int itemCount = 0;
 
     public void addItem(Item item){
-        int i = 0;
-        while (true) {
-            if (items[i] == null) {
-                items[i] = item;
-                i++;
-                break;                
-            }
+        if (itemCount < items.length) {
+            items[itemCount] = item;
+            itemCount++;
+        } else{
+            System.out.println("order is full!");
         }
+            
     }
 
     public Item[] getItems() {
@@ -25,10 +23,11 @@ public class Order {
     }
 
     public double calculatePrice(){
-        int i = 0;
         double price = 0;
-        while(items[i] != null){
-            price += items[i].getPrice();
+        for(Item item : items){
+            if (item != null) {
+                price += item.getPrice();    
+            }
         }
         return price;
     }
@@ -39,13 +38,11 @@ public class Order {
         System.out.println();
         for(int i = 0; i < items.length; i++){
             if (items[i] != null) {
-                System.out.printf("%s\n%.2f\n", items[i].getMenu(), items[i].getPrice());                    
+                System.out.println(items[i].getMenu());
+                System.out.println(items[i].getPrice());                    
             }
         }
-        System.out.println("==================================================");
-        System.out.printf("Subtotal: %39.2f\n", calculatePrice());
-        System.out.printf("Tax (5%%): %39.2f\n", calculatePrice() * 5/100);
-        System.out.printf("Total: %42.2f\n", calculatePrice() + calculatePrice() * 5/100);
-        
+        System.out.println("=================================================="); 
+        System.out.printf("Total: %.2f", calculatePrice());  
     }
 }

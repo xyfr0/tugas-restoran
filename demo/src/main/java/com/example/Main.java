@@ -7,9 +7,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int choice = 999;
-        Order menu = new Order();
+        Order order = new Order();
 
-        for(int i = 0; i < menu.getItems().length; i++){
+        order.addItem(listMenu[0]);
+
+        for(int i = 0; i <= order.getItems().length; i++){
             for(int ii = 0; ii < listMenu.length; ii++){
              System.out.printf("%d. %s - %.0f\n",ii+1, listMenu[ii].getMenu(), listMenu[ii].getPrice());               
             }
@@ -17,17 +19,15 @@ public class Main {
             System.out.println("Pilih sesuai pesanan:");
                 choice = in.nextInt();
                 if (choice > 0 && choice < listMenu.length) {
-                    menu.addItem(listMenu[choice-1]);
+                    order.addItem(listMenu[choice-1]);
                 } else if(choice == 0){
-                    menu.generateReceipt();
-                    in.close();
+                    order.generateReceipt();
                     break;
                 } else{
                     System.out.println("input tidak valid");
                 }
         }
-        
-            
+       in.close();     
     }
 }
 
